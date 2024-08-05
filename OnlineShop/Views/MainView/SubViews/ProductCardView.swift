@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProductCardView: View {
     //MARK: - Properties
+    @EnvironmentObject var viewModel: MainViewModel
     let product: Product
     
     //MARK: - Body
@@ -14,7 +15,7 @@ struct ProductCardView: View {
                         CardImageView(url: url, width: size.width, height: size.height)
                         
                         Button {
-                           //TODO:
+                            self.viewModel.toggleFovorite(product: product)
                         } label: {
                         Image(systemName: "heart.fill")
                                 .padding(10)
@@ -47,6 +48,7 @@ struct ProductCardView: View {
 
 #Preview {
     MainView()
+        .environmentObject(MainViewModel())
     
 //    ProductCardView(
 //        product: Product(

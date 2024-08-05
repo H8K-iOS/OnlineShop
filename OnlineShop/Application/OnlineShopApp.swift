@@ -10,11 +10,13 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct OnlineShopApp: App {
+    //MARK: - Properties
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @StateObject var viewModel = MainViewModel()
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(viewModel)
         }
     }
 }
